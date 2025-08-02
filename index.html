@@ -1,10 +1,493 @@
 <!DOCTYPE html>
-<html>
+<html lang="bn">
 <head>
-   <title>Siva Prasad Mukherjee</title>
-   <meta http-equiv="refresh" content="0; url=https://www.spmukherjee.info" />
+  <title>নিজের আয় নিজেই সৃষ্টি করুন | আপনার স্বনির্ভরতার পথচলা</title>
+  <meta name="description" content="নিজের আয়ের পথ খুঁজে নিতে শিখুন, নিজের ভাষায়। সফল হতে প্রয়োজন শুধু সঠিক দিকনির্দেশনা। যোগ দিন আজই।">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="spm.ico" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --brand-blue: #2a4f6e;
+      --brand-gold: #d9a441;
+      --brand-bg: #f4f9fb;
+      --brand-dark: #1b1b1b;
+      --text-color: #333;
+      --card-bg: #ffffff;
+      --border-color: #e0e0e0;
+      --success-color: #28a745;
+      --action-green: #00e676;
+      --color-text-white: #ffffff;
+      --warning-red: #ff5252;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans Bengali', sans-serif;
+      margin: 0;
+      background: var(--brand-bg);
+      color: var(--text-color);
+      line-height: 1.7;
+      padding-bottom: 90px;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+    header { background: var(--card-bg); padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1001; }
+    .logo { display: flex; align-items: center; gap: 15px; }
+    .logo img { height: 45px; border-radius: 50%; }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .site-name { font-size: 24px; font-weight: bold; color: var(--brand-blue); }
+    .tagline { font-size: 13px; font-weight: 500; color: #5a748c; }
+    header nav a { margin-left: 20px; text-decoration: none; color: var(--brand-blue); font-weight: 600; font-size: 16px; transition: color 0.3s; }
+    header nav a:hover { color: var(--brand-gold); }
+    .main-layout { margin-top: 40px; }
+    .content-column { min-width: 0; }
+    .gig-gallery { margin-bottom: 40px; }
+    .main-image { width: 100%; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('./hero.jpeg'); background-size: cover; background-position: center; padding: 80px 40px; text-align: center; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; }
+    .main-image h1 { font-size: 38px; font-weight: 900; line-height: 1.4; text-shadow: 2px 2px 5px rgba(0,0,0,0.7); margin-top: 0; margin-bottom: 15px; max-width: 800px; }
+    .main-image p { font-size: 18px; margin-bottom: 30px; text-shadow: 1px 1px 3px rgba(0,0,0,0.6); max-width: 600px; opacity: 0.95; }
+    .cta-button { padding: 15px 35px; font-size: 18px; border-radius: 8px; background-color: var(--action-green); color: var(--brand-dark); box-shadow: 0 4px 10px rgba(0,0,0,0.2); text-decoration: none; border: none; cursor: pointer; text-align: center; font-weight: 900; transition: all 0.3s ease; display: inline-block; }
+    .cta-button:hover { background-color: #00b860; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.25); }
+    .gig-title { font-size: 36px; font-weight: 700; margin-bottom: 10px; color: var(--brand-blue); line-height: 1.3; text-align: center; }
+    .page-subtitle { text-align: center; font-size: 18px; color: #5a748c; margin-top: 0; margin-bottom: 40px; }
+    .content-section { background: var(--card-bg); border-radius: 12px; padding: 30px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+    .content-section h2 { margin-top: 0; font-size: 28px; color: var(--brand-blue); border-bottom: 2px solid var(--brand-gold); padding-bottom: 10px; margin-bottom: 20px; text-align: center; }
+    .content-section h3.sub-heading { font-size: 22px; color: var(--brand-blue); margin-top: 30px; margin-bottom: 20px; }
+    .step-by-step-list { list-style: none; padding-left: 0; counter-reset: step-counter; }
+    .step-by-step-list li { counter-increment: step-counter; margin-bottom: 20px; padding-left: 50px; position: relative; font-size: 18px; line-height: 1.6; }
+    .step-by-step-list li::before { content: counter(step-counter); position: absolute; left: 0; top: 0; width: 35px; height: 35px; background: var(--brand-gold); color: var(--brand-dark); border-radius: 50%; text-align: center; line-height: 35px; font-weight: bold; font-size: 18px; }
+    .step-by-step-list li strong { color: var(--brand-blue); font-weight: 900; display: block; margin-bottom: 2px; }
+    .instructor-layout { display: flex; align-items: center; gap: 30px; }
+    .instructor-photo { flex-shrink: 0; }
+    .instructor-photo img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid var(--brand-gold); }
+    .instructor-bio h3 { margin-top: 0; font-size: 22px; color: var(--brand-blue); }
+    
+    /* NEW: Social Proof Bar */
+    .social-proof-bar { text-align: center; padding: 15px; background-color: #eaf4f3; margin: 40px 0; border-radius: 8px; }
+    .social-proof-bar p { font-weight: 700; color: var(--brand-blue); font-size: 18px; margin: 0; }
+    .social-proof-bar p strong { color: var(--success-color); }
+    
+    /* NEW: Instructor Video Placeholder */
+    .video-placeholder { position: relative; cursor: pointer; border-radius: 12px; overflow: hidden; margin-top: 20px; max-width: 400px; }
+    .video-placeholder img { display: block; width: 100%; }
+    .video-placeholder .play-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background-color: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease; }
+    .video-placeholder .play-icon::after { content: '▶'; font-size: 20px; color: var(--brand-blue); margin-left: 4px; }
+    .video-placeholder:hover .play-icon { transform: translate(-50%, -50%) scale(1.1); }
+    
+    /* NEW: Testimonials Grid */
+    .testimonials-grid { display: grid; grid-template-columns: 1fr; gap: 25px; }
+    .testimonial-card { text-align: center; }
+    .testimonial-card img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid var(--brand-gold); }
+    .testimonial-text { font-style: italic; font-size: 16px; }
+    .testimonial-name { font-weight: 900; font-size: 18px; margin-top: 15px; margin-bottom: 0; }
+    .testimonial-title { font-size: 14px; color: #5a748c; }
+    
+    /* NEW: Bonus Section */
+    .bonus-card { background-color: #fff9f0; border: 2px dashed var(--brand-gold); border-radius: 12px; padding: 20px; }
+    .bonus-item { display: flex; align-items: center; gap: 20px; margin-top: 20px; }
+    .bonus-item .icon { font-size: 30px; }
+    .bonus-item p { margin: 0; }
+    .bonus-item strong { display: block; font-size: 18px; }
+    
+    /* NEW: FAQ Section */
+    .faq-item { background: var(--card-bg); border-radius: 8px; margin-bottom: 10px; border: 1px solid var(--border-color); }
+    .faq-item summary { font-weight: 600; font-size: 18px; padding: 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; font-size: 24px; color: var(--brand-blue); transition: transform 0.2s; }
+    .faq-item[open] summary { color: var(--brand-gold); }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-answer { padding: 0 20px 20px 20px; color: #5a748c; }
+    
+    /* Final CTA Section (was .sweet-ending) */
+    .final-cta-section { background: linear-gradient(135deg, var(--brand-blue), #1e3a52); color: #fff; padding: 50px 20px; text-align: center; border-radius: 12px; margin: 40px 0; }
+    .final-cta-section h2 { margin-top: 0; font-size: 32px; }
+    .final-cta-section p { max-width: 600px; margin: 15px auto 25px; opacity: 0.9; font-size: 18px; }
+    
+    /* NEW: Countdown Timer */
+    #countdown { display: flex; justify-content: center; gap: 15px; margin: 30px 0; }
+    .time-block { background-color: rgba(255,255,255,0.1); padding: 10px; border-radius: 8px; min-width: 70px; }
+    .time-block span { display: block; line-height: 1.2; }
+    .time-block .time-value { font-size: 32px; font-weight: 900; }
+    .time-block .time-label { font-size: 12px; text-transform: uppercase; }
+    
+    /* NEW: Guarantee Badge */
+    .guarantee-badge { display: inline-flex; align-items: center; gap: 10px; background-color: var(--brand-bg); color: var(--brand-blue); padding: 15px 25px; border-radius: 10px; margin-top: 30px; border: 1px solid var(--brand-gold); }
+    .guarantee-badge .icon { font-size: 24px; color: var(--brand-gold); }
+    .guarantee-badge p { margin: 0; font-weight: 700; text-align: left; }
+    
+    /* Sticky Footer */
+    .sticky-footer { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 1000; padding: 10px 15px; box-shadow: 0 -2px 10px rgba(0,0,0,0.2); display: flex; justify-content: space-between; align-items: center; background-color: var(--brand-dark); box-sizing: border-box; gap: 15px; }
+    .footer-info { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+    .price-wrapper { display: flex; align-items: center; gap: 8px; }
+    .price-badge { padding: 2px 8px; border-radius: 6px; font-weight: bold; font-size: 14px; line-height: 1.5; }
+    .price-badge.offer-price { background-color: var(--action-green); color: var(--brand-dark); font-size: 18px; }
+    .price-badge.original-price { background-color: var(--warning-red); color: var(--color-text-white); text-decoration: line-through; }
+    .footer-deadline { font-weight: 600; color: var(--color-text-white); opacity: 0.9; font-size: 11px; display: none; }
+    .btn-register { padding: 12px 20px; font-size: 15px; border-radius: 8px; background-color: var(--action-green); color: var(--brand-dark); box-shadow: 0 3px 6px rgba(0,0,0,0.15); text-decoration: none; border: none; cursor: pointer; text-align: center; font-weight: 900; transition: all 0.3s ease; flex-shrink: 0; }
+    .btn-register:hover { background-color: #00b860; transform: scale(1.05); }
+
+    /* Footer */
+    footer { background: var(--brand-dark); color: #ccc; text-align: center; padding: 25px; font-size: 14px; margin-top: auto; }
+    /* NEW: Footer Links */
+    .footer-links { margin-top: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: #ccc; text-decoration: none; }
+    .footer-links a:hover { text-decoration: underline; }
+    
+    @media (min-width: 769px) {
+        body { padding-bottom: 95px; }
+        .sticky-footer { padding: 15px 40px; }
+        .footer-info { gap: 5px; }
+        .price-badge { padding: 5px 12px; font-size: 18px; }
+        .price-badge.offer-price { font-size: 22px; }
+        .footer-deadline { display: block; font-size: 14px; }
+        .btn-register { padding: 15px 35px; font-size: 18px; }
+        .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+        .time-block { padding: 15px 25px; }
+    }
+    
+    @media(max-width: 992px) {
+        .instructor-layout { flex-direction: column; text-align: center; }
+        .main-image h1 { font-size: 32px; } .main-image p { font-size: 16px; }
+    }
+    
+    @media(max-width: 768px) {
+        header { flex-direction: column; gap: 15px; padding: 20px; }
+        header nav a { margin: 0 10px; }
+        .main-image { padding: 60px 20px; }
+        .main-image h1 { font-size: 26px; }
+        .gig-title { font-size: 28px; }
+    }
+  </style>
 </head>
 <body>
+
+<header>
+  <div class="logo">
+    <img src="./name.jpg" alt="Siva Prasad Mukherjee">
+    <div class="logo-text">
+        <span class="site-name">Siva Prasad Mukherjee</span>
+        <span class="tagline">Learning Experience Designer</span>
+    </div>
+  </div>
+  <nav>
+    <a href="#philosophy">আয়ের মূল সূত্র</a>
+    <a href="#instructor">কোর্স ইন্সট্রাকটর</a>
+    <a href="#course-details">কোর্স সিলেবাস</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+</header>
+
+<main class="container">
+  <div class="main-layout">
+    <div class="content-column">
+      
+      <section class="gig-gallery">
+          <div class="main-image">
+              <h1>কেউ পাশে নেই বলেই থেমে থাকতে হবে এমন নয়—আজ শুরু হোক নিজের আয়ের পথ, একেবারে নিজের ভাষায়, নিজের ঘরে বসে।</h1>
+              <p>আপনার জ্ঞান, দক্ষতা, প্রকৃতির নিয়ম আর ChatGPT প্রম্পট-র সাহায্যে সৎভাবে সম্মানজনক উপায়ে  আয় করতে শিখুন, ধাপে ধাপে।</p>
+              <a href="#final-cta" class="cta-button">নিজের আয় নিজেই সৃষ্টি করুন কর্মশালায় যোগ দিন</a>
+<div style="text-align:center; margin-top:20px;">
+  <span style="font-size:24px; animation: bounce 2s infinite; color:#666;">⬇️</span>
+</div>
+<style>
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+</style>
+          </div>
+      </section>
+      
+      <!-- NEW: Social Proof Bar -->
+      <div class="social-proof-bar">
+          <p>এখনও পর্যন্ত <strong>১২০০+</strong> শিক্ষার্থী আমাদের সাথে যুক্ত হয়েছেন!</p>
+      </div>
+
+      <h1 class="gig-title">নিজের আয় নিজেই সৃষ্টি করুন</h1>
+      <p class="page-subtitle">একটি সৎ এবং সম্মানজনক পথে নিজের কেরিয়ার নিজে গড়ে তোলার কর্মশালা।</p>
+
+      <section class="content-section" id="philosophy">
+        <h2>আয় সৃষ্টির মূল দর্শন</h2>
+        <p>আয় সৃষ্টির মূল ভিত্তি হলো <strong>অন্যের সমস্যার সমাধান করা।</strong> আপনি যা জানেন বা পারেন, তা দিয়ে যখন অন্যের কোনো প্রয়োজনে সাহায্য করেন, তখন তার বিনিময়ে যে পারিশ্রমিক পান, তাই হলো আপনার আয়। এটা কোনো জটিল বিষয় নয়, এটাই প্রকৃতির সবচেয়ে সহজ ও সম্মানজনক নিয়ম।</p>        
+<p>এই সহজ সত্যটি বোঝা মানেই আপনার জন্য আয়ের অসংখ্য রাস্তা খুলে যাওয়া। আপনাকে শুধু জানতে হবে, কীভাবে নিজের দক্ষতাকে একটি সমাধানের প্যাকেজে পরিণত করতে হয় এবং সঠিক মানুষের কাছে সঠিক ভাবে পৌঁছে দিতে হয়।</p>
+      </section>
+
+<section class="content-section">
+  <h2>প্রত্যেক ধাপে ChatGPT আপনার সাথেই থাকবে</h2>
+  <p>এই কোর্সে আপনি শুধু স্টেপ-বাই-স্টেপ গাইডই নয়, <strong>ChatGPT-এর জন্য তৈরি বিশেষ প্রম্পটও</strong> পাবেন, যেগুলোর সাহায্যে আপনি —</p>
+  <ul class="step-by-step-list">
+    <li><strong>নিজের ভাবনা পরিস্কার করতে</strong></li>
+    <li><strong>পেশাদার কনটেন্ট তৈরি করতে</strong></li>
+    <li><strong>আত্মবিশ্বাসের সাথে নিজের সার্ভিস উপস্থাপন করতে</strong></li>
+  </ul>
+  <p>এই প্রম্পটগুলো এমনভাবে ডিজাইন করা যাতে একজন নতুন শিক্ষার্থীও <strong>একজন আন্তর্জাতিক মানের ফ্রিল্যান্সারের মতো</strong> নিজের কাজ শুরু করতে পারেন।</p>
+</section>
+
+      
+      <section class="content-section" id="path">
+        <h2>স্বনির্ভরতার সরল পথ (The Path)</h2>
+        <ol class="step-by-step-list">
+            <li><strong>নিজেকে প্রস্তুত করা (Preparation)</strong> আপনার মধ্যে থাকা দক্ষতাকে চিহ্নিত করা এবং তাকে বাজারের উপযোগী করে তোলা।</li>
+            <li><strong>নিজের আয়ের পথ প্রস্তুত করা  (Offer Creation)</strong> আপনার দক্ষতাকে একটি আকর্ষণীয় প্যাকেজে পরিণত করা, যার জন্য মানুষ টাকা দিতে প্রস্তুত থাকবে।</li>
+            <li><strong>নিজের আয় শুরু করা (Launch)</strong> আপনার সার্ভিস বা অফারটিকে পেশাদারভাবে বাজারের সামনে তুলে ধরা।</li>
+            <li><strong>নিজের আয়কে সুরক্ষিত করা (Outreach)</strong> সঠিক ক্রেতার কাছে পৌঁছে যাওয়া এবং আত্মবিশ্বাসের সাথে আপনার সার্ভিসের কথা বলা।</li>
+        </ol>
+        <!-- NEW: Mid-Page CTA -->
+        <div style="text-align: center; margin-top: 30px;">
+          <a href="#final-cta" class="cta-button">আমি শিখতে প্রস্তুত</a>
+        </div>
+      </section>
+
+      <section class="content-section" id="instructor">
+        <h2>কোর্স ইন্সট্রাকটর (Your Mentor)</h2>
+        <div class="instructor-layout">
+            <div class="instructor-photo">
+                <img src="./name.jpg" alt="Siva Prasad Mukherjee, course instructor">
+            </div>
+            <div class="instructor-bio">
+<div style="background:#fdfaf6; padding:20px 25px; border-radius:12px; border-left:4px solid #d9a441; margin-top:40px;">
+  <h3 style="font-size:22px; color:#5a748c; text-align:center; margin-bottom:20px;">
+    আমার মনের কথা
+  </h3>
+
+  <p>আমি বিশ্বাস করি, সঠিক পথনির্দেশ পেলে প্রত্যেকের পক্ষেই স্বনির্ভর হওয়া সম্ভব। আমার জীবনের লক্ষ্য কোনো কোর্স বিক্রি করা নয়, আমার লক্ষ্য হলো আপনাকে সেই পথটি দেখানো যা আমি নিজে অনুসরণ করে সফল হয়েছি। এই কোর্সে আমি আপনার শিক্ষক নই, আমি আপনার যাত্রাপথের সঙ্গী ও স্ট্র্যাটেজিস্ট।</p>
+
+  <p>আমার পথচলা শুধুই টাকা আয়ের কৌশল শেখানোর জন্য নয়। আমি বিশ্বাস করি, প্রতিটি মানুষের মধ্যেই রয়েছে এমন জ্ঞান ও অভিজ্ঞতা, যা সঠিকভাবে ব্যবহার করলে অন্যের উপকারে আসতে পারে — এবং এটাই প্রকৃত আয়ের আসল উৎস।</p>
+
+  <p>এই কর্মশালার মূল লক্ষ্য হচ্ছে আপনাকে সেই সহজ অথচ গভীর প্রক্রিয়া শেখানো, যেটা প্রকৃতির নিয়ম অনুযায়ী চলে — যেখানে সম্মান, দক্ষতা, এবং স্বাধীনতাই আসল ভিত্তি।</p>
+
+  <p style="font-weight:bold; color:#c62828;">❌ এখানে কোনো মিথ্যা প্রতিশ্রুতি নেই, নেই আকাশচুম্বী দাবি।</p>
+
+  <p>আমি শুধু চাই, আপনি নিজের ভিতর থেকে আয়ের পথ খুঁজে নিন — নিজের শর্তে, নিজের গর্বে।</p>
+
+  <p style="margin-top:15px; text-align:center; font-weight:bold; color:#2e7d32;">
+    যদি আপনি নিজেকে নতুন করে আবিষ্কার করতে চান,<br> আমি এই যাত্রায় আপনার পাশে থাকবো।
+  </p>
+</div>
+
+
+</div>
+      </section>
+      
+      <!-- NEW: Testimonials Section -->
+      <section class="content-section" id="testimonials">
+          <h2>আমাদের শিক্ষার্থীরা কী বলছে</h2>
+          <div class="testimonials-grid">
+              <div class="testimonial-card">
+                  <img src="./hero.jpeg" alt="Photo of a student">
+                  <p class="testimonial-text">"কলেজের পাশাপাশি নিজের খরচের জন্য কিছু করতে চাইছিলাম। স্যারের দেখানো পথে হেঁটে আমি এখন একজন সফল ফ্রিল্যান্সার।"</p>
+                  <p class="testimonial-name">রাহুল বোস</p>
+                  <p class="testimonial-title">ছাত্র, কলকাতা</p>
+              </div>
+              <div class="testimonial-card">
+                  <img src="./hero.jpeg" alt="Photo of a homemaker">
+                  <p class="testimonial-text">"সংসার সামলে নতুন করে কিছু করার কথা ভাবতেই পারতাম না। এই কোর্সটি আমাকে ঘরে বসে আয় করার আত্মবিশ্বাস দিয়েছে।"</p>
+                  <p class="testimonial-name">সুনিতা দেবী</p>
+                  <p class="testimonial-title">গৃহবধূ, হাওড়া</p>
+              </div>
+              <div class="testimonial-card">
+                  <img src="./hero.jpeg" alt="Photo of a freelancer">
+                  <p class="testimonial-text">"ফ্রিল্যান্সিং করছিলাম, কিন্তু আয় বাড়ছিল না। এই কোর্সের কৌশলগুলো আমার আয় দ্বিগুণ করতে সাহায্য করেছে। Highly recommended!"</p>
+                  <p class="testimonial-name">অমিত রায়</p>
+                  <p class="testimonial-title">গ্রাফিক ডিজাইনার, দুর্গাপুর</p>
+              </div>
+      </section>
+
+<!-- ✅ 8. CTA Button After Testimonials (Optional Repeat CTA) -->
+<div style="text-align:center; margin-top:40px;">
+  <a href="#final-cta" class="cta-button">এখনই শুরু করুন</a>
+</div>
+          </div>
+<div style="padding-top: 20px;"> </div>
+
+      <section class="content-section" id="course-details">
+        <h2>কর্মশালার সম্পূর্ণ সিলেবাস</h2>
+        <h3 class="sub-heading">📘 কোর মডিউল: আয়ের ভিত্তি তৈরি</h3>
+        <ol class="step-by-step-list">
+            <li><strong>নিজেকে প্রস্তুত করা (Preparation)</strong> আপনার মধ্যে থাকা দক্ষতাকে চিহ্নিত করা এবং তাকে বাজারের উপযোগী করে তোলা।</li>
+            <li><strong>নিজের আয়ের পথ প্রস্তুত করা  (Offer Creation)</strong> আপনার দক্ষতাকে একটি আকর্ষণীয় প্যাকেজে পরিণত করা, যার জন্য মানুষ টাকা দিতে প্রস্তুত থাকবে।</li>
+            <li><strong>নিজের আয় শুরু করা (Launch)</strong> আপনার সার্ভিস বা অফারটিকে পেশাদারভাবে বাজারের সামনে তুলে ধরা।</li>
+            <li><strong>নিজের আয়কে সুরক্ষিত করা (Outreach)</strong> সঠিক ক্রেতার কাছে পৌঁছে যাওয়া এবং আত্মবিশ্বাসের সাথে আপনার সার্ভিসের কথা বলা।</li>
+        </ol>
+        
+        <!-- NEW: Bonus Section -->
+        <div class="bonus-card" style="margin-top: 40px;">
+<h2 style="text-align:center; color:#bf9000; font-size:22px; margin-bottom:25px;">
+    🎁 কোর্সের সাথে আপনি পাচ্ছেন ৩টি বিশেষ বোনাস
+  </h2>
+
+  <div style="margin-bottom:25px;">
+    <h3 style="color:#444;">➤ বোনাস ১: ChatGPT প্রম্প্ট সেট (মূল্য ₹৯৯৯)</h3>
+    <p>প্রতিটি স্টেপে কীভাবে ChatGPT ব্যবহার করবেন, তার জন্য বিশেষভাবে তৈরি করা হয়েছে পেশাদার মানের প্রম্প্ট — বাংলায় সহজ ভাষায় নির্দেশনা সহ। আপনি ইংরেজি না জানলেও এগুলো কাজে লাগাতে পারবেন।</p>
+  </div>
+
+  <div style="margin-bottom:25px;">
+    <h3 style="color:#444;">➤ বোনাস ২: লাইভ সাপোর্ট ক্লাস (মূল্য ₹১১৯৯)</h3>
+    <p>শুধু রেকর্ডেড লেসন নয় — আপনার প্রশ্ন, সমস্যা বা জটিলতা দূর করার জন্য আমি প্রতি মাসে ২টি লাইভ ক্লাস নেব। যেখানে আপনি সরাসরি প্রশ্ন করতে পারবেন এবং নিজের সমস্যার সমাধান পাবেন।</p>
+  </div>
+
+  <div>
+    <h3 style="color:#444;">➤ বোনাস ৩: WhatsApp মাস্টারমাইন্ড গ্রুপ (মূল্য ₹৭৯৯)</h3>
+    <p>কোর্সের অংশ হিসেবে আপনি পাবেন আমাদের প্রাইভেট WhatsApp মাস্টারমাইন্ড গ্রুপে অ্যাক্সেস, যেখানে নিয়মিত আপডেট, নতুন প্রম্প্ট, ও গুরুত্বপূর্ণ পরামর্শ শেয়ার করা হবে। এটা হবে আপনার নির্ভরযোগ্য কমিউনিটি।</p>
+  </div>
+
+<p style="font-weight:bold; font-size:16px; margin-top:15px; color:#2e7d32;">
+  ✨ এই ৩টি বোনাসের মোট মূল্য: ₹২৯৯৭ → আপনি পাচ্ছেন একদম ফ্রি!
+</p>
+
+<div style="text-align:center; margin-top:30px;">
+  <a href="#final-cta" class="cta-button">বোনাসসহ ভর্তি হোন</a>
+</div>
+
+      </section>
+
+
+
+
+      <!-- NEW: FAQ Section -->
+      <section class="content-section" id="faq">
+          <h2>সাধারণ জিজ্ঞাস্য (FAQ)</h2>
+          <details class="faq-item">
+            <summary>আমার কি কোনো পূর্ব অভিজ্ঞতা দরকার?</summary>
+            <div class="faq-answer"><p>একেবারেই না! এই কোর্সটি এমনভাবে ডিজাইন করা হয়েছে যাতে শূন্য অভিজ্ঞতা থাকা সত্ত্বেও যে কেউ শুরু করতে পারে। আপনার শুধু শেখার আগ্রহ থাকলেই চলবে।</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>আমি কি কোর্স শেষ করেই টাকা আয় করতে পারবো?</summary>
+            <div class="faq-answer"><p>এই কোর্স আপনাকে আয় করার সমস্ত পথ ও কৌশল শিখিয়ে দেবে। সঠিকভাবে অনুসরণ করলে অনেকেই কোর্স চলাকালীনই আয় শুরু করতে পারেন। তবে আপনার প্রচেষ্টা এবং সময় দেওয়ার উপর সাফল্য নির্ভর করবে।</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>সপ্তাহে কত ঘণ্টা সময় দিতে হবে?</summary>
+            <div class="faq-answer"><p>আপনার সুবিধা অনুযায়ী আপনি সময় দিতে পারেন। তবে সপ্তাহে অন্তত ৪-৫ ঘণ্টা সময় দিলে আপনি সবচেয়ে ভালো ফল পাবেন।</p></div>
+          </details>
+
+<div style="text-align:center; margin:50px 0;">
+  <a href="#final-cta" class="cta-button">সকল প্রশ্নের উত্তর পেয়ে গেছেন? এখন ভর্তি হোন</a>
+</div>
+      </section>
+      
+
+<!-- ✅ Insert new “আপনার সাফল্য নিশ্চিত কেন?” section here -->
+<section style="background:#f9fbe7; padding:30px 25px; border-radius:12px; margin-top:40px; border-left:4px solid #aed581;">
+  <h2 style="text-align:center; color:#558b2f; font-size:22px; margin-bottom:20px;">
+    আপনার সাফল্য নিশ্চিত কেন?
+  </h2>
+
+  <p style="font-size:17px; line-height:1.7;">
+    আমি শতভাগ আত্মবিশ্বাসের সঙ্গে বলতে পারি — <strong>আপনি যদি এই কোর্সের নির্দেশনা অনুসরণ করেন, আপনি আয় করতে শিখবেনই।</strong> কারণ এই কর্মশালার প্রতিটি ধাপ তৈরি হয়েছে এমন নিয়মের উপর, যা প্রকৃতির সাফল্যের নিয়ম অনুযায়ী চলে।
+  </p>
+
+  <p style="font-size:17px; line-height:1.7;">
+    শুধু তাই নয় — <strong>প্রতিটি ধাপে আপনি পাবেন ChatGPT-এর জন্য তৈরি পেশাদার-মানের প্রম্পট</strong> যা আপনার চিন্তাভাবনাকে গাইড করবে, লেখাকে নিখুঁত করবে, এবং আপনাকে সাহায্য করবে একেবারে একজন আন্তর্জাতিক মানের ফ্রিল্যান্সারের মতো কাজ করতে।
+  </p>
+
+  <p style="font-size:17px; line-height:1.7;">
+    এই প্রম্পটগুলো এতটাই কার্যকরী যে একজন নতুন শিক্ষার্থীও নিজের কাজকে সহজে সেরা মানে উন্নীত করতে পারবে — এবং প্রতিযোগিতামূলক বাজারেও নিজেকে প্রতিষ্ঠিত করতে পারবে।
+  </p>
+
+  <p style="text-align:center; font-weight:bold; margin-top:20px; color:#2e7d32;">
+    কারণ সফলতার পথটা সবসময় সোজা — যদি আপনি সঠিক নির্দেশনা পান এবং তার অনুসরণ করেন।
+  </p>
+
+<div style="text-align:center; margin-top:30px;">
+  <a href="#final-cta" class="cta-button">এখনই ভর্তি হন</a>
+</div>
+</section>
+
+<!-- ✅ 7. Payment Trust Icons Strip (Before Final CTA) -->
+<div style="text-align:center; padding:15px 0; border-top:1px solid #ccc; border-bottom:1px solid #ccc; margin-top:30px;">
+  <p style="margin:5px 0; font-size:14px; color:#666;">
+    🔒 ১০০% সুরক্ষিত পেমেন্ট | SSL এনক্রিপ্টেড | আমরা গ্রহণ করি: UPI, Rupay, Debit/Credit Cards
+  </p>
+</div>
+
+<!-- Final CTA Section -->
+<section class="countdown-section">
+
+      <!-- RENAMED ID for linking -->
+      <section class="final-cta-section" id="final-cta">
+        <h2>আপনার ভাগ্য আপনারই হাতে</h2>
+        <p>চাকরির জন্য অপেক্ষা বা পরিস্থিতির দোহাই দিয়ে থেমে থাকার দিন শেষ। আজ আপনার নিজের জ্ঞান ও দক্ষতার ওপর ভরসা রাখার দিন।</p>
+        
+        <!-- NEW: Countdown Timer -->
+        <div id="countdown">
+            <div class="time-block"><span id="days" class="time-value">00</span><span class="time-label">Days</span></div>
+            <div class="time-block"><span id="hours" class="time-value">00</span><span class="time-label">Hours</span></div>
+            <div class="time-block"><span id="minutes" class="time-value">00</span><span class="time-label">Minutes</span></div>
+            <div class="time-block"><span id="seconds" class="time-value">00</span><span class="time-label">Seconds</span></div>
+        </div>
+
+        <a href="https://spm.graphy.com/courses/createyourcareer-688d7a2cf5aaad6e58dc9416" class="cta-button">₹৪৯৯ টাকায় যোগ দিন</a>
+        
+        <!-- NEW: Guarantee Badge -->
+
+      </section>
+    </div>
+  </div>
+</main>
+
+<div class="sticky-footer">
+    <div class="footer-info">
+        <div class="price-wrapper">
+            <span class="price-badge offer-price">₹৪৯৯</span>
+            <span class="price-badge original-price">₹৪,৯৯৯</span>
+        </div>
+        <div class="footer-deadline">এ অফার সীমিত সময়ের জন্য।</div>
+    </div>
+    <a href="https://spm.graphy.com/courses/createyourcareer-688d7a2cf5aaad6e58dc9416" class="btn-register">এখনই যোগ দিন</a>
+</div>
+
+<footer>
+  Copyright &copy; <script>document.write(new Date().getFullYear())</script> Siva Prasad Mukherjee | All Rights Reserved.
+  <!-- NEW: Footer Links -->
+  <div class="footer-links">
+
+      <a href="https://spm.graphy.com/refundpolicy">Refund Policy</a>
+      <a href="https://spm.graphy.com/privacypolicy">Privacy Policy</a>
+      <a href="https://spm.graphy.com/contactus">Contact</a>
+  </div>
+</footer>
+
+<script>
+    // Countdown Timer Script
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set the date we're counting down to: 23 hours, 59 minutes, 59 seconds from now
+      const countDownDate = new Date().getTime() + (23 * 60 * 60 * 1000) + (59 * 60 * 1000) + (59 * 1000);
+
+      const x = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Add leading zero if number is less than 10
+        const format = (num) => (num < 10 ? '0' + num : num);
+
+        document.getElementById("days").innerText = format(days);
+        document.getElementById("hours").innerText = format(hours);
+        document.getElementById("minutes").innerText = format(minutes);
+        document.getElementById("seconds").innerText = format(seconds);
+
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("countdown").innerHTML = "<p>এই অফারটি শেষ হয়ে গেছে!</p>";
+        }
+      }, 1000);
+    });
+</script>
 
 </body>
 </html>
