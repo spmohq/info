@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Advanced Prompt Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-gradient-start: #1f2937;
+      --bg-gradient-end: #111827;
+      --card-bg: rgba(31, 41, 55, 0.5); /* Semi-transparent card background */
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text-primary: #f9fafb;
+      --text-secondary: #d1d5db;
+      --text-heading: #ffffff;
+      --accent-primary: #22d3ee;
+      --accent-hover: #67e8f9;
+      --accent-success: #34d399;
+      --input-bg: #374151;
+      --code-bg: rgba(0, 0, 0, 0.3);
+      --shadow-color: rgba(0, 0, 0, 0.25);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 950px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+    }
+    p.subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+    }
+    .input-section {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 40px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .input-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    .input-group {
+        display: flex;
+        flex-direction: column;
+    }
+    .input-group label {
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+    }
+    .input-group input, .input-group textarea, .input-group select {
+        background-color: var(--input-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 8px;
+        padding: 12px;
+        color: var(--text-primary);
+        font-size: 1rem;
+        font-family: 'Inter', sans-serif;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .input-group textarea {
+        resize: vertical;
+        min-height: 80px;
+    }
+    .input-group input:focus, .input-group textarea:focus, .input-group select:focus {
+        outline: none;
+        border-color: var(--accent-primary);
+        box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.3);
+    }
+    .full-width {
+        grid-column: 1 / -1;
+    }
+    .prompts-container {
+      display: grid;
+      gap: 30px;
+    }
+    .prompt-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px 0 var(--shadow-color);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px); /* For Safari */
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .prompt-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px 0 var(--shadow-color);
+    }
+    .prompt-card h2 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .prompt-text {
+      background-color: var(--code-bg);
+      padding: 20px;
+      border-radius: 10px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-family: 'Source Code Pro', "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 1rem;
+      color: var(--text-primary);
+      font-weight: 600;
+      flex-grow: 1;
+      margin-bottom: 20px;
+      border: 1px solid var(--card-border);
+    }
+    .copy-button {
+      align-self: flex-end;
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--bg-gradient-end);
+      background-color: var(--accent-primary);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .copy-button:hover {
+      background-color: var(--accent-hover);
+      transform: scale(1.05);
+    }
+    .copy-button.copied {
+      background-color: var(--accent-success);
+    }
+    .copy-button .icon { width: 16px; height: 16px; }
+    .copy-button .copied-icon { display: none; }
+    .copy-button.copied .copy-icon { display: none; }
+    .copy-button.copied .copied-icon { display: inline-block; }
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    @media (max-width: 600px) {
+      body { padding: 20px 15px; }
+      h1 { font-size: 2rem; }
+      .prompt-card h2 { font-size: 1.4rem; }
+      .prompt-text { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Advanced Prompt Generator</h1>
+      <p class="subtitle">Fill in the details below to generate tailored, high-quality prompts.</p>
+    </header>
+
+    <main>
+      <section class="input-section">
+        <div class="input-grid">
+          <div class="input-group full-width">
+            <label for="issueInput">Describe the issue</label>
+            <textarea id="issueInput" placeholder="e.g., I struggle with procrastination when starting large projects."></textarea>
+          </div>
+          <div class="input-group full-width">
+            <label for="avatarInput">Describe who is facing the issue</label>
+            <textarea id="avatarInput" placeholder="e.g., A freelance software developer in their late 20s, works from home, highly skilled but disorganized."></textarea>
+          </div>
+          <div class="input-group full-width">
+            <label for="goalInput">What they want or hope to achieve</label>
+            <textarea id="goalInput" placeholder="e.g., To create a reliable system for breaking down big projects and starting work consistently without feeling overwhelmed."></textarea>
+          </div>
+          <div class="input-group">
+            <label for="optionNumberInput">Option Number</label>
+            <input type="number" id="optionNumberInput" placeholder="e.g., 3">
+          </div>
+          <div class="input-group">
+            <label for="optionDetailsInput">Details of the option</label>
+            <input type="text" id="optionDetailsInput" placeholder="e.g., Using the Pomodoro Technique with a task-batching system.">
+          </div>
+          <div class="input-group">
+            <label for="audienceLevelInput">Audience Level</label>
+            <select id="audienceLevelInput">
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <div class="prompts-container" id="promptsContainer">
+        
+        <div class="prompt-card">
+          <h2>An Extra Prompt (Bengali Translation)</h2>
+          <pre id="bengaliPrompt" class="prompt-text"></pre>
+          <button class="copy-button" data-target="bengaliPrompt">
+            <svg class="icon copy-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" /></svg>
+            <svg class="icon copied-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            <span class="button-text">Copy Prompt</span>
+          </button>
+        </div>
+
+        <div class="prompt-card">
+          <h2>Prompt 1: Mentor & Coach</h2>
+          <pre id="mentorPrompt" class="prompt-text"></pre>
+          <button class="copy-button" data-target="mentorPrompt">
+            <svg class="icon copy-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" /></svg>
+            <svg class="icon copied-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            <span class="button-text">Copy Prompt</span>
+          </button>
+        </div>
+        
+        <div class="prompt-card">
+          <h2>Prompt 2: Comprehensive Guide</h2>
+          <pre id="guidePrompt" class="prompt-text"></pre>
+          <button class="copy-button" data-target="guidePrompt">
+            <svg class="icon copy-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" /></svg>
+            <svg class="icon copied-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            <span class="button-text">Copy Prompt</span>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+        <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Siva Prasad Mukherjee. All Rights Reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Input elements
+      const issueInput = document.getElementById('issueInput');
+      const avatarInput = document.getElementById('avatarInput');
+      const goalInput = document.getElementById('goalInput');
+      const optionNumberInput = document.getElementById('optionNumberInput');
+      const optionDetailsInput = document.getElementById('optionDetailsInput');
+      const audienceLevelInput = document.getElementById('audienceLevelInput');
+
+      // Output elements
+      const bengaliPromptEl = document.getElementById('bengaliPrompt');
+      const mentorPromptEl = document.getElementById('mentorPrompt');
+      const guidePromptEl = document.getElementById('guidePrompt');
+
+      // All input elements in an array for easy event listener attachment
+      const allInputs = [issueInput, avatarInput, goalInput, optionNumberInput, optionDetailsInput, audienceLevelInput];
+
+      function generatePrompts() {
+        // Get values from inputs, with fallbacks to placeholders
+        const issue = issueInput.value || "[Describe the issue]";
+        const avatar = avatarInput.value || "[Describe who is facing the issue — background, traits, etc.]";
+        const goal = goalInput.value || "[What they want or hope to achieve]";
+        const number = optionNumberInput.value || "[number]";
+        const optionDetails = optionDetailsInput.value || "[Details of the option]";
+        const audienceLevel = audienceLevelInput.value || "[beginner / intermediate / advanced]";
+
+        // --- Template for Bengali Prompt ---
+        const bengaliPromptTemplate = `Please translate it word by word in the most natural sounding modern Bengali (India) language, used in the daily life of Indian Bengalese, that can be understood by an 11 year old but contains the international standards of language.
+• Always use the formal “আপনি”, not the informal “তুমি.”`;
+        
+        // --- Template for Mentor Prompt ---
+        const mentorPromptTemplate = `Role: Act as a guide, mentor, and coach.
+
+Objective: Help me understand how to solve a specific issue with insight, structure, and empathy.
+
+Context:
+
+Issue: ${issue}
+
+Person Affected (Avatar): ${avatar}
+
+Desire / Goal: ${goal}
+
+Task: Explain how to solve this issue.
+
+Please include:
+
+A short diagnosis of the core problem.
+
+A few root causes or contributing factors.
+
+Several possible solutions or approaches, categorized if helpful (e.g., mindset, strategy, tools).
+
+A recommended path forward, explaining why it’s effective.
+
+(Optional) Common mistakes or pitfalls to avoid.
+
+Tone: Supportive, practical, and encouraging — as if mentoring someone who truly wants to improve.`;
+
+        // --- Template for Guide Prompt ---
+        const guidePromptTemplate = `Audience level (optional): ${audienceLevel}
+
+I choose option number ${number}:
+${optionDetails}
+
+Task: Write a comprehensive, instructional, and strategic guide that teaches how to implement option ${number} step-by-step so a practitioner can apply it in real-world cases and solve problems effectively.
+
+Requirements & structure (must follow):
+
+1. One-line summary
+   - State the outcome and who benefits.
+
+2. Short diagnosis / why this option works
+   - 2–4 bullets on its value and the problems it solves.
+
+3. Getting Started (must be a numbered Step block)
+   - Use this exact label and numbered-step style:
+     Step 1: ...
+     Step 2: ...
+     ...
+   - If using ChatGPT: Step 1: Go to https://chat.openai.com/ (or use your LLM interface of choice).
+   - If the user provided platform-specific setup, follow that; otherwise give platform-agnostic steps.
+   - Include a short privacy caution: do NOT paste personal, confidential, or sensitive data into public or third-party prompts/interfaces.
+
+4. Full Implementation Plan (procedural, ordered steps)
+   - Provide a clear sequence of numbered steps. For each step include:
+     • Action (what to do)
+     • Expected result (what should happen)
+     • When to repeat the step (if applicable)
+     • One short troubleshooting tip (if the step commonly fails)
+   - If any step requires a prompt to paste into an LLM, show that prompt inside a code block and label it (e.g., \`Prompt for Step 3:\`).
+
+5. Examples & Case Studies
+   - At least one concrete example or mini case study showing the option applied end-to-end.
+
+6. Checklists & Deliverables
+   - A verification checklist and list of tangible deliverables the user should have at completion.
+
+7. Best Practices & Common Pitfalls
+   - 4–6 bullets of dos and don’ts.
+
+8. Troubleshooting & FAQ
+   - 3–5 short Q&A entries for common challenges and fixes.
+
+Assumptions:
+- If user-provided details are ambiguous or missing, assume the most practical interpretation and state that assumption at the top of the guide.
+
+Formatting & tone rules:
+- Clear, professional, approachable.
+- Use numbered steps for any setup/procedural content (exact phrasing: “Step 1: … Step 2: …”).
+- Use code blocks for prompts, command lines, configuration snippets.
+- Mention external tools or URLs only as optional and provide alternatives (e.g., “or use your LLM interface of choice”).
+- Deliver the full guide in one well-structured response, using headings and numbered lists so it can be copy-pasted into documentation or a knowledge base.
+
+Safety & privacy note (include in the guide):
+- One short line telling users not to paste personal/confidential/sensitive data into third-party prompts or public interfaces.
+
+Deliver the full guide in one well-structured output, ready for direct use or publication.`;
+
+        // Update the content of the <pre> tags
+        bengaliPromptEl.textContent = bengaliPromptTemplate;
+        mentorPromptEl.textContent = mentorPromptTemplate;
+        guidePromptEl.textContent = guidePromptTemplate;
+      }
+
+      // Add event listeners to all inputs to update prompts in real-time
+      allInputs.forEach(input => {
+        input.addEventListener('input', generatePrompts);
+      });
+
+      // Initial generation on page load
+      generatePrompts();
+
+      // --- Copy Button Functionality (mimicked from original file) ---
+      const promptsContainer = document.getElementById('promptsContainer');
+      promptsContainer.addEventListener('click', (event) => {
+        const button = event.target.closest('.copy-button');
+        if (!button) return;
+
+        const targetId = button.dataset.target;
+        const textToCopy = document.getElementById(targetId).textContent;
+        const buttonTextEl = button.querySelector('.button-text');
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          const originalText = buttonTextEl.textContent;
+          buttonTextEl.textContent = 'Copied!';
+          button.classList.add('copied');
+          
+          setTimeout(() => {
+            buttonTextEl.textContent = "Copy Prompt";
+            button.classList.remove('copied');
+          }, 2000);
+        }).catch(err => {
+          console.error('Failed to copy text: ', err);
+          alert('Failed to copy text. Please try again.');
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
